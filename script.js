@@ -181,6 +181,7 @@ function putIcon(elem) {
       elem.querySelector(".icon-o").style.display !== "block"
     ) {
       elem.querySelector(`.icon-${active1}`).style.display = "block";
+      elem.querySelector(`.hover-icon-${active1}`).style.display = "none";
       /// which array to push
       if (active1 === "x") {
         arrX.push(Number(elem.className[10]));
