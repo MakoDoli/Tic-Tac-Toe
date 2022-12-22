@@ -310,6 +310,7 @@ function restart() {
     let cpuStarts = document.querySelector(`.cell-${randomCell}`);
     cpuStarts.querySelector(".icon-x").style.display = "block";
     arrX.push(randomCell);
+    putCounter = 1;
   }
 }
 function resetGame() {
