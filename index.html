@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mobquery.css" />
+    <title>Frontend Mentor | Tic Tac Toe</title>
+  </head>
+  <body>
+    <div class="new-game-container">
+      <img class="logo" src="./assets/logo.svg" />
+      <div class="pick-xo">
+        <h3>Pick player 1's mark</h3>
+        <div class="switch-xo">
+          <div class="pick-x">
+            <svg
+              width="64"
+              height="64"
+              xmlns="http://www.w3.org/2000/svg"
+              viewport="64 64 64 64"
+              class="svg-x"
+            >
+              <path
+                d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </div>
+          <div class="pick-o">
+            <svg
+              width="64"
+              height="64"
+              xmlns="http://www.w3.org/2000/svg"
+              class="svg-o"
+            >
+              <path
+                d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+              />
+            </svg>
+          </div>
+        </div>
+        <p>Remember: X goes first</p>
+      </div>
+      <button class="vs-cpu" id="yellow" onclick="alert('Pick mark first')">
+        new game (vs cpu)
+      </button>
+      <button class="vs-player" id="blue" onclick="alert('Pick mark first')">
+        new game (vs player)
+      </button>
+    </div>
+
+    <div class="game-on-container">
+      <div class="header">
+        <img class="logo" src="./assets/logo.svg" />
+        <div class="turn">
+          <svg
+            width="64"
+            height="64"
+            xmlns="http://www.w3.org/2000/svg"
+            viewport="64 64 64 64"
+            class="svg-x-2"
+          >
+            <path
+              d="M15.002 1.147 32 18.145 48.998 1.147a3 3 0 0 1 4.243 0l9.612 9.612a3 3 0 0 1 0 4.243L45.855 32l16.998 16.998a3 3 0 0 1 0 4.243l-9.612 9.612a3 3 0 0 1-4.243 0L32 45.855 15.002 62.853a3 3 0 0 1-4.243 0L1.147 53.24a3 3 0 0 1 0-4.243L18.145 32 1.147 15.002a3 3 0 0 1 0-4.243l9.612-9.612a3 3 0 0 1 4.243 0Z"
+              fill-rule="evenodd"
+            />
+          </svg>
+          <svg
+            width="64"
+            height="64"
+            xmlns="http://www.w3.org/2000/svg"
+            class="svg-o-2"
+          >
+            <path
+              d="M32 0c17.673 0 32 14.327 32 32 0 17.673-14.327 32-32 32C14.327 64 0 49.673 0 32 0 14.327 14.327 0 32 0Zm0 18.963c-7.2 0-13.037 5.837-13.037 13.037 0 7.2 5.837 13.037 13.037 13.037 7.2 0 13.037-5.837 13.037-13.037 0-7.2-5.837-13.037-13.037-13.037Z"
+            />
+          </svg>
+          <h3>turn</h3>
+        </div>
+        <div class="reset" onclick="resetGame()">
+          <img src="./assets/icon-restart.svg" />
+        </div>
+      </div>
+      <div class="game-board">
+        <div class="cell cell-1" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-2" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-3" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-4" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-5" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-6" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-7" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-8" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+        <div class="cell cell-9" onclick="putIcon(this)">
+          <img class="icon-x" src="./assets/icon-x.svg" />
+          <img class="icon-o" src="./assets/icon-o.svg" />
+          <img class="hover-icon-x" src="./assets/icon-x-outline.svg" />
+          <img class="hover-icon-o" src="./assets/icon-o-outline.svg" />
+        </div>
+      </div>
+      <div class="footer">
+        <div class="pl-1">
+          <div class="pl-1-text">pl1</div>
+          <div class="x-score">0</div>
+        </div>
+        <div class="ties">
+          <div class="ties-text">TIES</div>
+          <div class="ties-score">0</div>
+        </div>
+        <div class="opponent">
+          <div class="opponent-text">pl2</div>
+          <div class="o-score">0</div>
+        </div>
+      </div>
+    </div>
+    <div class="winner-container-background">
+      <div class="game-winner-container">
+        <div class="game-winner-text"></div>
+        <div class="game-winner-announce">
+          <img class="game-winner-x" src="./assets/icon-x.svg" />
+          <img class="game-winner-o" src="./assets/icon-o.svg" />
+          Takes the round
+        </div>
+        <div class="game-winner-buttons">
+          <div class="quit-button" onclick="reset()">quit</div>
+          <div class="next-round" onclick="restart()">next round</div>
+        </div>
+      </div>
+    </div>
+    <div class="restart-button-background">
+      <div class="restart-button-container">
+        <div class="restart-button-text">restart game?</div>
+        <div class="restart-buttons">
+          <div class="cancel-restart">no, cancel</div>
+          <div class="yes-restart">yes, restart</div>
+        </div>
+      </div>
+    </div>
+    <!-- New game menu start -->
+
+    <!-- Pick player 1's mark
+  Remember: X goes first
+
+  New Game (vs CPU)
+  New Game (vs player) -->
+
+    <!-- New game menu end -->
+
+    <!-- Game board start -->
+
+    <!-- x/o icon turn
+
+  X (You) Your score -->
+    <!-- Ties -->
+    <!-- Ties score -->
+    <!-- X (CPU) -->
+    <!-- CPU score -->
+
+    <!-- Oh no, you lost You won! Player -->
+    <!-- 1/2 -->
+    <!-- wins! -->
+
+    <!-- x/o icon takes the round
+  Round tied
+  Restart game?
+
+  Quit
+  Next round
+  No, cancel
+  Yes, restart -->
+
+    <!-- Game board end -->
+    <script src="script.js"></script>
+  </body>
+</html>

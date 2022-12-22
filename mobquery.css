@@ -1,0 +1,77 @@
+@media screen and (max-width: 680px) {
+  .pick-xo {
+    width: 327px;
+    height: 205px;
+    margin: 32px 0;
+  }
+  .switch-xo {
+    width: 279px;
+  }
+  button {
+    width: 327px;
+    height: 56px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .game-on-container {
+    width: 328px;
+  }
+  .turn {
+    height: 40px;
+  }
+  .reset {
+    width: 40px;
+    height: 40px;
+  }
+  .game-board {
+    height: 328px;
+    grid-template-columns: repeat(3, 96px);
+    grid-template-rows: repeat(3, 96px);
+  }
+  .cell {
+    border-radius: 10px;
+  }
+  .pl-1,
+  .ties,
+  .opponent {
+    width: 96px;
+    height: 64px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .restart-button-container {
+    height: 228px;
+  }
+  .restart-button-text {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .cancel-restart {
+    width: 139px;
+    height: 52px;
+  }
+  .yes-restart {
+    width: 146px;
+    height: 52px;
+  }
+  .yes-restart,
+  .cancel-restart {
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .game-winner-container {
+    height: 228px;
+  }
+  .game-winner-announce {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .game-winner-x,
+  .game-winner-o {
+    width: 48px;
+    height: 28px;
+  }
+}
