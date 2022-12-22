@@ -6,5 +6,8 @@
 
 Thanks for checking this Frontend Mentor coding challenge.
 
+Live url: https://makodoli.github.io/Tic-Tac-Toe/
+
 This project is built with HTML, CSS and JAVASCRIPT using css-flxebox, css-grid, JS event handlers.
-In this project I used recursion (recursive function) and I've learned how to remove "onclick" attribute from element.
+
+In this project I used recursion (recursive function) and learned how to remove "onclick" attribute from element.
