@@ -78,7 +78,7 @@ p {
   cursor: pointer;
 }
 .pick-o {
-  background: var(--grey);
+  background: var(--navy);
   width: 50%;
   height: 100%;
   display: flex;
@@ -93,7 +93,7 @@ p {
 }
 .svg-o {
   transform: scale(0.5);
-  fill: var(--navy);
+  fill: var(--grey);
 }
 
 button {
@@ -197,6 +197,10 @@ button {
 }
 .icon-x,
 .icon-o {
+  display: none;
+}
+.winner-x,
+.winner-o {
   display: none;
 }
 .footer {
