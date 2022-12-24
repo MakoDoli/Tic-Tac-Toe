@@ -61,6 +61,7 @@ pickO.addEventListener("click", function () {
     let cpuStarts = document.querySelector(`.cell-${randomCell}`);
     cpuStarts.querySelector(".icon-x").style.display = "block";
     arrX.push(randomCell);
+    putCounter = 1;
   });
 });
 
@@ -107,6 +108,7 @@ let counterTie = 0;
 let putCounter = 0;
 let randomNum;
 let stopper = 0;
+let winnerIcons;
 
 cells.forEach((elem) => {
   elem.addEventListener("mouseenter", function (elem) {
@@ -150,6 +152,8 @@ function putIcon(elem) {
       if (checkArr(arrX)) {
         putCounter = 0;
         gameWin.style.display = "flex";
+        winIcons("var(--palegrey)", "x");
+
         document.querySelector(".game-winner-x").style.display = "block";
         document.querySelector(".game-winner-o").style.display = "none";
         document.querySelector(".game-winner-text").textContent = "PL1 wins!";
@@ -161,6 +165,7 @@ function putIcon(elem) {
       if (checkArr(arrO)) {
         putCounter = 0;
         gameWin.style.display = "flex";
+        winIcons("var(--paleyellow)", "o");
         document.querySelector(`.game-winner-o`).style.display = "block";
         document.querySelector(".game-winner-x").style.display = "none";
         document.querySelector(".game-winner-text").textContent = "PL2 wins!";
@@ -169,12 +174,7 @@ function putIcon(elem) {
       }
     }
     putCounter += 1;
-    if (putCounter == 9) {
-      gameWin.style.display = "flex";
-      document.querySelector(".game-winner-text").textContent = "round tied";
-      document.querySelector(".game-winner-announce").style.display = "none";
-      counterTie += 1;
-    }
+    tiesCounter(9);
   } else if (cpu) {
     if (
       elem.querySelector(".icon-x").style.display !== "block" &&
@@ -200,6 +200,7 @@ function putIcon(elem) {
       if (checkArr(arrX)) {
         putCounter = 0;
         gameWin.style.display = "flex";
+        winIcons("var(--palegrey");
         document.querySelector(".game-winner-x").style.display = "block";
         document.querySelector(".game-winner-o").style.display = "none";
         if (active1 === "x") {
@@ -216,6 +217,7 @@ function putIcon(elem) {
     if (arrO.length >= 3) {
       if (checkArr(arrO)) {
         gameWin.style.display = "flex";
+        winIcons("var(--paleyellow");
         document.querySelector(`.game-winner-o`).style.display = "block";
         document.querySelector(`.game-winner-x`).style.display = "none";
         if (active1 === "o") {
@@ -229,21 +231,41 @@ function putIcon(elem) {
       }
     }
     putCounter += 1;
-    if (putCounter == 5) {
-      gameWin.style.display = "flex";
-      document.querySelector(".game-winner-text").textContent = "round tied";
-      document.querySelector(".game-winner-announce").style.display = "none";
-      counterTie += 1;
-    }
+    tiesCounter(5);
   }
+}
+
+function tiesCounter(num) {
+  if (putCounter == num) {
+    gameWin.style.display = "flex";
+    document.querySelector(".game-winner-text").textContent = "round tied";
+    document.querySelector(".game-winner-announce").style.display = "none";
+    counterTie += 1;
+  }
+}
+
+function winIcons(color, icon) {
+  document.querySelector(`.cell-${winnerIcons[0]}`).style.background = color;
+  document.querySelector(`.cell-${winnerIcons[1]}`).style.background = color;
+  document.querySelector(`.cell-${winnerIcons[2]}`).style.background = color;
+  // ---> this part to change winner icon color <--- //
+  // document
+  //   .querySelector(`.cell-${winnerIcons[0]}`)
+  //   .querySelector(`.winner-${icon}`).style.display = "block";
+  // document
+  //   .querySelector(`.cell-${winnerIcons[1]}`)
+  //   .querySelector(`.winner-${icon}`).style.display = "block";
+  // document
+  //   .querySelector(`.cell-${winnerIcons[2]}`)
+  //   .querySelector(`.winner-${icon}`).style.display = "block";
 }
 
 function randomCell() {
   if (stopper == 8) return false;
   randomNum = Math.floor(Math.random() * 9) + 1;
-  console.log(randomNum);
+
   let element = document.querySelector(`.cell-${randomNum}`);
-  console.log(element);
+
   if (
     element.querySelector(".icon-x").style.display !== "block" &&
     element.querySelector(".icon-o").style.display !== "block"
@@ -272,11 +294,13 @@ function checkArr(arr) {
   });
   for (let j = 0; j < winArr.length; j++) {
     if (winArr[j] === winArr[j + 1] && winArr[j + 1] === winArr[j + 2]) {
+      let winnerIndex = winArr[j];
+      winnerIcons = winPattern[winnerIndex];
       return true;
     }
   }
 }
-
+// --->> ABOVE CODE SHORTER VERSION << ---- //
 // function checkArr(arr) {
 //   const winArr = winPattern.reduce((result, pattern) => {
 //     if (pattern.every(item => arr.includes(item))) {
@@ -297,6 +321,7 @@ function restart() {
   cells.forEach((elem) => {
     elem.querySelector(".icon-o").style.display = "none";
     elem.querySelector(".icon-x").style.display = "none";
+    elem.style.background = "var(--board)";
   });
   arrX = [];
   arrO = [];
